@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Kingfisher
 
-extension GenreViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension GenreListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.genres.count
     }
@@ -30,6 +30,25 @@ extension GenreViewController: UICollectionViewDelegate, UICollectionViewDataSou
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedGenreId = viewModel.genres[indexPath.row].id
+        let title = viewModel.genres[indexPath.row].name
+        performSegue(withIdentifier: Constants.genreArtistListSegueIdentifier, sender: (selectedGenreId, title))
+    }
+    
+}
+
+extension GenreListViewController {
+    func getGenres() {
+        viewModel.fetchGenres {[weak self] in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self.genreCollectionView.reloadData()
+            }
+        }
+    }
+    
     func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: (genreCollectionView.frame.width - 30) / 3, height: 200)
@@ -39,16 +58,14 @@ extension GenreViewController: UICollectionViewDelegate, UICollectionViewDataSou
         genreCollectionView.collectionViewLayout = layout
     }
     
-}
-
-extension GenreViewController {
-    func getGenres() {
-        viewModel.fetchGenres {[weak self] in
-            guard let self = self else { return }
-            
-            DispatchQueue.main.async {
-                self.genreCollectionView.reloadData()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.genreArtistListSegueIdentifier{
+            if let data = sender as? (Int, String){
+                let destinationVC = segue.destination as? GenreArtistListViewController
+                destinationVC?.genreId = data.0
+                destinationVC?.titleText = data.1
             }
         }
+        
     }
 }

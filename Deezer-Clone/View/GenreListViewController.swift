@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GenreViewController: UIViewController {
+class GenreListViewController: UIViewController {
     
     @IBOutlet weak var genreCollectionView: UICollectionView!
     let viewModel = GenreViewModel()

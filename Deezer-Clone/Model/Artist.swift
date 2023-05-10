@@ -21,4 +21,16 @@ struct Artist: Codable {
     let pictureXl: String
     let tracklist: String
     let type: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case picture
+        case pictureSmall = "picture_small"
+        case pictureMedium = "picture_medium"
+        case pictureBig = "picture_big"
+        case pictureXl = "picture_xl"
+        case tracklist
+        case type
+    }
 }

@@ -12,7 +12,7 @@
         <!--Genres-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="GenreViewController" customModule="Deezer_Clone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GenreListViewController" customModule="Deezer_Clone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,7 +42,7 @@
                                                         <constraint firstAttribute="width" constant="190" id="Xkl-vW-ZSx"/>
                                                     </constraints>
                                                 </imageView>
-                                                <visualEffectView opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qB8-AX-NDa">
+                                                <visualEffectView opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qB8-AX-NDa">
                                                     <rect key="frame" x="0.0" y="0.0" width="190" height="190"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0yh-Tp-q8H">
                                                         <rect key="frame" x="0.0" y="0.0" width="190" height="190"/>
@@ -101,11 +101,28 @@
                     <navigationItem key="navigationItem" title="Genres" id="B0L-oY-0JJ"/>
                     <connections>
                         <outlet property="genreCollectionView" destination="4e0-FE-DPA" id="eRi-VH-E4Y"/>
+                        <segue destination="5ao-hY-sEk" kind="show" identifier="toGenre" id="DAP-kA-IM8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1947.3282442748091" y="3.5211267605633805"/>
+        </scene>
+        <!--Genre Artist List View Controller-->
+        <scene sceneID="nMJ-2l-dRg">
+            <objects>
+                <viewController id="5ao-hY-sEk" customClass="GenreArtistListViewController" customModule="Deezer_Clone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aoz-Wg-XWd">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="oAm-xZ-fDG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="UAW-Bb-NMx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hu7-Mc-AFD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4715.2671755725187" y="3.5211267605633805"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="77Z-8Q-2M2">
@@ -113,6 +130,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="lRU-3a-mBE" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Oy-d4-s0O">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -124,11 +142,11 @@
             </objects>
             <point key="canvasLocation" x="93.89312977099236" y="3.5211267605633805"/>
         </scene>
-        <!--Item-->
+        <!--Genres-->
         <scene sceneID="iYt-TJ-pws">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LzI-5b-Tjv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="bYp-5o-wJf"/>
+                    <tabBarItem key="tabBarItem" title="Genres" image="music.quarternote.3" catalog="system" id="bYp-5o-wJf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="ZUj-9G-0L6">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
@@ -143,8 +161,30 @@
             </objects>
             <point key="canvasLocation" x="1020.6106870229007" y="3.5211267605633805"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iJG-SB-125">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r78-hK-Bms" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OzG-oz-Ryx">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5ao-hY-sEk" kind="relationship" relationship="rootViewController" id="ADr-Wg-l5l"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HIA-L0-hg2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3788.5496183206105" y="3.5211267605633805"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="DAP-kA-IM8"/>
+    </inferredMetricsTieBreakers>
     <resources>
+        <image name="music.quarternote.3" catalog="system" width="128" height="102"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
