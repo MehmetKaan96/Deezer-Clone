@@ -1,0 +1,6 @@
+framework module Pods_Deezer_Clone {
+  umbrella header "Pods-Deezer-Clone-umbrella.h"
+
+  export *
+  module * { export * }
+}
