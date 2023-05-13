@@ -9,15 +9,24 @@ import UIKit
 
 class GenreArtistListViewController: UIViewController {
 
+    @IBOutlet weak var artistCollectionView: UICollectionView!
     var genreId: Int?
     var titleText: String?
+    
+    let artistViewModel = ArtistViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        if let text = titleText {
+        artistCollectionView.delegate = self
+        artistCollectionView.dataSource = self
+        
+        setupCollectionView()
+        
+        if let text = titleText, let id = genreId {
             title = text
+            getGenreArtists(by: id)
         }
     }
     

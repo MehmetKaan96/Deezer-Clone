@@ -44,14 +44,13 @@ struct APINetwork {
     }
     
     func getArtistsByGenre(_ id: Int, completion: @escaping(Result<[Artist], Error>) -> Void) {
-        let url = URL(string: Constants.endpoint + Constants.genre + "/\(id)/" + Constants.artists)
-        
-        guard let urlString = url else {
+        let urlString = Constants.endpoint + Constants.genre + "/\(id)/" + Constants.artists
+        guard let url = URL(string: urlString) else {
             completion(.failure(NetworkError.invalidURL))
             return
         }
         
-        URLSession.shared.dataTask(with: urlString) { data, response, error in
+        URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))
                 return
@@ -60,13 +59,72 @@ struct APINetwork {
                 completion(.failure(NetworkError.invalidData))
                 return
             }
-            do{
-               let decoder = JSONDecoder()
-                var decodedData = try decoder.decode(GenreArtistResponse.self, from: data)
-                completion(.success(decodedData.response))
+            do {
+                let decoder = JSONDecoder()
+                let decodedData = try decoder.decode(GenreArtistResponse.self, from: data)
+                completion(.success(decodedData.data))
             } catch {
+                completion(.failure(error))
+            }
+            
+        }.resume()
+    }
+    
+    func getAlbumsByArtistId(_ id: Int, completion: @escaping(Result<[Album], Error>) -> Void) {
+        let urlString = Constants.endpoint + Constants.artist + "/\(id)/" + Constants.album
+        
+        guard let url = URL(string: urlString) else {
+            completion(.failure(NetworkError.invalidURL))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let data = data else {
+                completion(.failure(NetworkError.invalidData))
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                let trackListResponse = try decoder.decode(AlbumResponse.self, from: data)
+                completion(.success(trackListResponse.data))
+            } catch let error {
                 completion(.failure(error))
             }
         }.resume()
     }
+    
+    func getTracksById(_ id: Int, completion: @escaping(Result<[Track], Error>) -> Void) {
+        let urlString = Constants.endpoint + Constants.album + "/\(id)/" + Constants.tracks
+        
+        guard let url = URL(string: urlString) else {
+            completion(.failure(NetworkError.invalidURL))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(NetworkError.invalidData))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let decodedData = try decoder.decode(AlbumTracksResponse.self, from: data)
+                print(decodedData.data)
+            } catch {
+                completion(.failure(error))
+            }
+        }
+    }
 }
+
+
