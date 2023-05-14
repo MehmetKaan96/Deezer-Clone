@@ -33,8 +33,10 @@ extension GenreArtistListViewController: UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let widthPerItem = view.frame.width / 2.15
-        return CGSize(width: widthPerItem, height: widthPerItem)
+//        let widthPerItem = view.frame.width / 2.15
+//        return CGSize(width: widthPerItem, height: widthPerItem)
+        let width = (collectionView.bounds.width - 20) / 2.14 // iki hücre yan yana, hücreler arasındaki boşluk 10
+            return CGSize(width: width, height: width)
     }
 }
 
@@ -52,8 +54,17 @@ extension GenreArtistListViewController {
     }
     
     func setupCollectionView() {
+//        let layout = UICollectionViewFlowLayout()
+//        layout.itemSize = CGSize(width: (artistCollectionView.frame.width - 30) / 3, height: 200)
+//        layout.minimumInteritemSpacing = 5
+//        layout.minimumLineSpacing = 5
+//        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+//        artistCollectionView.collectionViewLayout = layout
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: (artistCollectionView.frame.width - 30) / 3, height: 200)
+        let screenWidth = UIScreen.main.bounds.width
+        let itemWidth = (screenWidth - 30) / 3 // burada 30, kenar boşlukları toplam genişliği ifade eder
+        let itemHeight: CGFloat = 200
+        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = 5
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)

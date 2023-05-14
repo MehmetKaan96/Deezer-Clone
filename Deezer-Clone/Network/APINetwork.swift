@@ -98,7 +98,7 @@ struct APINetwork {
     }
     
     func getTracksById(_ id: Int, completion: @escaping(Result<[Track], Error>) -> Void) {
-        let urlString = Constants.endpoint + Constants.album + "/\(id)/" + Constants.tracks
+        let urlString = Constants.endpoint + "album/\(id)/" + Constants.tracks
         
         guard let url = URL(string: urlString) else {
             completion(.failure(NetworkError.invalidURL))
@@ -110,20 +110,18 @@ struct APINetwork {
                 completion(.failure(error))
                 return
             }
-            
             guard let data = data else {
                 completion(.failure(NetworkError.invalidData))
                 return
             }
-            
             do {
                 let decoder = JSONDecoder()
                 let decodedData = try decoder.decode(AlbumTracksResponse.self, from: data)
-                print(decodedData.data)
+                completion(.success(decodedData.data))
             } catch {
                 completion(.failure(error))
             }
-        }
+        }.resume()
     }
 }
 

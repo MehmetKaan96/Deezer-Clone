@@ -14,7 +14,8 @@ class ArtistAlbumViewController: UIViewController {
     var text: String?
     var artistImageURL: URL?
     var albumId: Int = 0
-    let trackListViewModel = ArtistAlbumViewModel()
+    let albumViewModel = ArtistAlbumViewModel()
+    var albumImage = [String]()
 
     @IBOutlet weak var albumTableView: UITableView!
     @IBOutlet weak var artistImageView: UIImageView!
@@ -28,7 +29,7 @@ class ArtistAlbumViewController: UIViewController {
         if let id = artistId, let detailTitle = text, let url = artistImageURL {
             artistImageView.kf.setImage(with: url)
             title = detailTitle
-            trackListViewModel.fetchAlbumsByArtistId(id) {
+            albumViewModel.fetchAlbumsByArtistId(id) {
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
                     self.albumTableView.reloadData()

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="trackCell" rowHeight="90" id="KGk-i7-Jjw" customClass="TracksTableViewCell" customModule="Deezer_Clone" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7PM-E4-WT5">
+                        <rect key="frame" x="0.0" y="0.0" width="95" height="90"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="90" id="IlH-e9-2pO"/>
+                            <constraint firstAttribute="width" constant="95" id="tLc-0G-zCL"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="x7y-mG-K02">
+                        <rect key="frame" x="103" y="10" width="102.66666666666669" height="35"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUF-FI-VhB">
+                                <rect key="frame" x="0.0" y="0.0" width="48" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156.33000000000001" id="qSi-i4-P6H"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFf-eF-coX">
+                                <rect key="frame" x="52" y="0.0" width="50.666666666666657" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50.670000000000002" id="UeI-U4-vBa"/>
+                                    <constraint firstAttribute="height" constant="35" id="cUe-c9-YDu"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                            </button>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hn-ul-zjs">
+                        <rect key="frame" x="103" y="55" width="28.666666666666657" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="8hn-ul-zjs" secondAttribute="trailing" constant="190" id="5CR-FZ-FDL"/>
+                    <constraint firstItem="7PM-E4-WT5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="D5g-YL-vPg"/>
+                    <constraint firstAttribute="bottom" secondItem="7PM-E4-WT5" secondAttribute="bottom" id="DeQ-xw-t6M"/>
+                    <constraint firstItem="x7y-mG-K02" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Ijy-zD-15j"/>
+                    <constraint firstItem="x7y-mG-K02" firstAttribute="leading" secondItem="7PM-E4-WT5" secondAttribute="trailing" constant="8" id="K1F-8m-U0f"/>
+                    <constraint firstItem="8hn-ul-zjs" firstAttribute="leading" secondItem="7PM-E4-WT5" secondAttribute="trailing" constant="8" id="KlG-N8-oG5"/>
+                    <constraint firstItem="8hn-ul-zjs" firstAttribute="top" secondItem="x7y-mG-K02" secondAttribute="bottom" constant="10" id="V3V-U6-aPm"/>
+                    <constraint firstItem="7PM-E4-WT5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="VDb-OM-itX"/>
+                    <constraint firstAttribute="bottom" secondItem="8hn-ul-zjs" secondAttribute="bottom" constant="23" id="fDH-8T-SYQ"/>
+                    <constraint firstAttribute="trailing" secondItem="x7y-mG-K02" secondAttribute="trailing" constant="8" id="kcA-qP-jeT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="favouriteButton" destination="xFf-eF-coX" id="TEg-GH-HXP"/>
+                <outlet property="songDurationLabel" destination="8hn-ul-zjs" id="5n3-zy-lHc"/>
+                <outlet property="songNameLabel" destination="vUF-FI-VhB" id="R5c-TK-g2F"/>
+                <outlet property="trackImageView" destination="7PM-E4-WT5" id="vPm-Mr-FQJ"/>
+            </connections>
+            <point key="canvasLocation" x="138.93129770992365" y="35.91549295774648"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="heart" catalog="system" width="128" height="107"/>
+    </resources>
+</document>

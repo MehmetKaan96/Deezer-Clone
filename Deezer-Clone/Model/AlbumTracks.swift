@@ -24,8 +24,8 @@ struct Track: Codable {
     let explicitContentLyrics: Int
     let explicitContentCover: Int
     let preview: String
-    let artist: Artist
-    let album: Album
+//    let artist: Artist
+//    let album: Album
     
     enum CodingKeys: String, CodingKey {
         case id, readable, title
@@ -35,7 +35,8 @@ struct Track: Codable {
         case explicitLyrics = "explicit_lyrics"
         case explicitContentLyrics = "explicit_content_lyrics"
         case explicitContentCover = "explicit_content_cover"
-        case preview, artist, album
+        case preview
+//        case artist, album
     }
 }
 

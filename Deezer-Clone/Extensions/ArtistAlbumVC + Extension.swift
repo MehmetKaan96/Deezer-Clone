@@ -11,17 +11,16 @@ import Kingfisher
 
 extension ArtistAlbumViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trackListViewModel.albums.count
+        return albumViewModel.albums.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.albumCell, for: indexPath) as! AlbumTableViewCell
         
-        let image = URL(string: trackListViewModel.albums[indexPath.row].cover)
-        print(type(of: trackListViewModel.albums[indexPath.row].id))//Int
+        let image = URL(string: albumViewModel.albums[indexPath.row].cover)
         cell.albumImageView.kf.setImage(with: image)
-        cell.albumNameLabel.text = trackListViewModel.albums[indexPath.row].title
-        let date = formatDate(trackListViewModel.albums[indexPath.row].releaseDate!)
+        cell.albumNameLabel.text = albumViewModel.albums[indexPath.row].title
+        let date = formatDate(albumViewModel.albums[indexPath.row].releaseDate!)
         if let date = date {
             cell.albumReleaseLabel.text = "Release Date: \(date)"
         }
@@ -29,7 +28,10 @@ extension ArtistAlbumViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "", sender: nil)
+        let selectedImage = albumViewModel.albums[indexPath.row].cover
+        let selectedId = albumViewModel.albums[indexPath.row].id
+        let albumTitle = albumViewModel.albums[indexPath.row].title
+        performSegue(withIdentifier: Constants.tracksSegue, sender: (selectedId, albumTitle, selectedImage))
     }
     
     
@@ -48,5 +50,16 @@ extension ArtistAlbumViewController {
         dateFormatterPrint.dateFormat = "dd-MMM-yyyy"
         
         return dateFormatterPrint.string(from: date)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.tracksSegue {
+            if let data = sender as? (Int, String, String) {
+                let destinationVC = segue.destination as! TracksViewController
+                destinationVC.albumTitle = data.1
+                destinationVC.albumId = data.0
+                destinationVC.albumImage = data.2
+            }
+        }
     }
 }

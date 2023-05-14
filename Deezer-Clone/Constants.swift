@@ -19,4 +19,6 @@ struct Constants {
     static let albumCell = "albumCell"
     static let album = "albums"
     static let tracks = "tracks"
+    static let tracksSegue = "toAlbumTracks"
+    static let trackCellName = "trackCell"
 }
