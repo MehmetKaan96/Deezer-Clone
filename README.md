@@ -1,6 +1,6 @@
 # Deezer-Clone
 
-# Çalıştırmadan Önce terminal'den "pod install" ı çalıştırın.
+# Çalıştırmadan Önce terminal'den klasörün içine girip "pod install" ı çalıştırın.
 
 
 <a name="readme-top"></a>
@@ -43,7 +43,7 @@
 
 ### Prerequisites
 
-Çalıştırmadan Önce terminal'den "pod install" ı çalıştırın.
+Çalıştırmadan Önce terminal'den klasörün içine girip"pod install" ı çalıştırın.
 
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
