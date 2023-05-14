@@ -290,7 +290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GIx-AU-7hd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5951.9083969465646" y="750.70422535211276"/>
+            <point key="canvasLocation" x="6878.6259541984728" y="750.70422535211276"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="77Z-8Q-2M2">
@@ -304,6 +304,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="LzI-5b-Tjv" kind="relationship" relationship="viewControllers" id="iFu-yN-SYi"/>
+                        <segue destination="pO9-cJ-o8Q" kind="relationship" relationship="viewControllers" id="L5K-4r-voJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qjV-IZ-xJO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -328,6 +329,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iBN-a3-VH7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1020.6106870229007" y="3.5211267605633805"/>
+        </scene>
+        <!--Favorites View Controller-->
+        <scene sceneID="5tD-wF-0uX">
+            <objects>
+                <viewController id="Jyc-Dh-cWN" customClass="FavoritesViewController" customModule="Deezer_Clone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XZb-Me-iw5">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QHF-wC-lnd">
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dLa-5g-p5m"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QHF-wC-lnd" firstAttribute="leading" secondItem="dLa-5g-p5m" secondAttribute="leading" id="2Gh-nb-W7B"/>
+                            <constraint firstItem="QHF-wC-lnd" firstAttribute="top" secondItem="dLa-5g-p5m" secondAttribute="top" id="ZCa-sE-saV"/>
+                            <constraint firstAttribute="bottom" secondItem="QHF-wC-lnd" secondAttribute="bottom" id="eTB-jV-nw2"/>
+                            <constraint firstItem="QHF-wC-lnd" firstAttribute="trailing" secondItem="dLa-5g-p5m" secondAttribute="trailing" id="nPM-gx-R8e"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Inn-YI-YrL"/>
+                    <connections>
+                        <outlet property="favoritesTableView" destination="QHF-wC-lnd" id="Qa8-3h-jNP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OhO-il-b1Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1707.6335877862596" y="866.90140845070425"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iJG-SB-125">
@@ -381,7 +413,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tcr-2Z-5Ig" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4963" y="751"/>
+            <point key="canvasLocation" x="5889.3129770992364" y="750.70422535211276"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="WuY-fd-mQt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pO9-cJ-o8Q" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart.fill" catalog="system" id="FmM-Fn-ehS"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VfI-AK-mwu">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Jyc-Dh-cWN" kind="relationship" relationship="rootViewController" id="VGt-XG-pRH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J12-D6-40W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="780.91603053435108" y="866.90140845070425"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -390,6 +441,7 @@
         <segue reference="DAP-kA-IM8"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="music.quarternote.3" catalog="system" width="128" height="102"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

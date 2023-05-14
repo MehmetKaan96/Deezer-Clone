@@ -16,7 +16,24 @@ extension TracksViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.trackCellName, for: indexPath) as! TracksTableViewCell
+        cell = tableView.dequeueReusableCell(withIdentifier: Constants.trackCellName, for: indexPath) as! TracksTableViewCell
+        
+        cell.delegate = self
+        let favorites = Array(realm.objects(Favourite.self))
+        favoriteTracks = favorites
+        cell.isFavourite = favorites.contains(where: { $0.trackId == trackViewModel.tracks[indexPath.row].id })
+        
+        let favoriteTrackId = Set(favorites.map({$0.trackId}))
+        
+        for cell in tableView.visibleCells {
+            guard let trackCell = cell as? TracksTableViewCell,
+                  let indexPath = tableView.indexPath(for: cell) else {
+                continue
+            }
+            
+            let track = trackViewModel.tracks[indexPath.row]
+            trackCell.isFavourite = favoriteTrackId.contains(track.id)
+        }
         
         if let image = albumImage, let url = URL(string: image) {
             cell.trackImageView.kf.setImage(with: url)
@@ -24,7 +41,6 @@ extension TracksViewController: UITableViewDelegate, UITableViewDataSource {
         cell.songNameLabel.text = trackViewModel.tracks[indexPath.row].title
         let duration = changeDurationToMinute(from: trackViewModel.tracks[indexPath.row].duration)
         cell.songDurationLabel.text = "\(duration)''"
-        
         return cell
     }
     
@@ -41,10 +57,9 @@ extension TracksViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension TracksViewController {
     func changeDurationToMinute(from second: Int) -> String {
-        let convertedSecond = Float(second)
-        
-        let minute = convertedSecond / Float(60)
-        return String(format: "%.2f", minute)
+        let seconds = second % 60
+        let minutes = (second / 60) % 60
+        return String(format: "%d.%02d", minutes, seconds)
     }
     
     func downloadPreviewSongAndPlay(with urlString: String) {
@@ -62,5 +77,40 @@ extension TracksViewController {
             }
         }
     }
+    
+}
+
+extension TracksViewController: TrackTableViewCellDelegate {
+    func didTappedFavouriteButton(_ sender: UIButton) {
+        guard let cell = sender.superview?.superview?.superview as? TracksTableViewCell,
+              let indexPath = tracksTableView.indexPath(for: cell) else {
+            return
+        }
+        
+        let selectedTrack = trackViewModel.tracks[indexPath.row]
+        let isFavourite = cell.isFavourite
+        
+        do {
+            try realm.write {
+                if !isFavourite {
+                    let duration = changeDurationToMinute(from: selectedTrack.duration)
+                    
+                    // Add to favourites
+                    let favouriteTrack = Favourite(trackId: selectedTrack.id, trackName: selectedTrack.title, albumImage: albumImage ?? "", duration: duration)
+                    realm.add(favouriteTrack)
+                    
+                    let alert = UIAlertController(title: "Başarılı", message: "Şarkı favorilerinize eklenmiştir.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Tamam", style: .default))
+                    present(alert, animated: true)
+                    
+                    cell.isFavourite = true
+                }
+            }
+        } catch {
+            print("Error modifying favourites: \(error.localizedDescription)")
+        }
+        
+    }
+    
     
 }
