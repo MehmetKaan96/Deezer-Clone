@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lRU-3a-mBE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="d8f-Uq-eyP">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -292,11 +292,57 @@
             </objects>
             <point key="canvasLocation" x="6878.6259541984728" y="750.70422535211276"/>
         </scene>
+        <!--Landing View Controller-->
+        <scene sceneID="lcp-9l-Hqi">
+            <objects>
+                <viewController id="d8f-Uq-eyP" customClass="LandingViewController" customModule="Deezer_Clone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="Mwg-WO-4UR">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoş Geldiniz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kH9-MA-AtK">
+                                <rect key="frame" x="86" y="402" width="221" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="CGW-sJ-Qas"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="note" translatesAutoresizingMaskIntoConstraints="NO" id="zNP-wh-ano">
+                                <rect key="frame" x="36" y="74" width="320" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="dHY-a0-umf"/>
+                                    <constraint firstAttribute="height" constant="320" id="gqw-gL-WNY"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NbF-Rd-aOH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NbF-Rd-aOH" firstAttribute="trailing" secondItem="zNP-wh-ano" secondAttribute="trailing" constant="37" id="0Z7-WF-hSr"/>
+                            <constraint firstItem="kH9-MA-AtK" firstAttribute="centerX" secondItem="Mwg-WO-4UR" secondAttribute="centerX" id="SnK-XN-CH1"/>
+                            <constraint firstItem="zNP-wh-ano" firstAttribute="leading" secondItem="NbF-Rd-aOH" secondAttribute="leading" constant="36" id="ePC-zT-8Xr"/>
+                            <constraint firstItem="kH9-MA-AtK" firstAttribute="top" secondItem="zNP-wh-ano" secondAttribute="bottom" constant="8" id="eqM-z4-LH9"/>
+                            <constraint firstItem="kH9-MA-AtK" firstAttribute="centerY" secondItem="Mwg-WO-4UR" secondAttribute="centerY" id="kfr-nP-0Oj"/>
+                            <constraint firstItem="zNP-wh-ano" firstAttribute="top" secondItem="NbF-Rd-aOH" secondAttribute="top" constant="15" id="leJ-DM-nvg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="welcomeLabel" destination="kH9-MA-AtK" id="DQh-DY-vFw"/>
+                        <segue destination="lRU-3a-mBE" kind="presentation" identifier="toGenres" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="AX2-8E-GmA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rrc-R3-dpI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1074.0458015267175" y="9.8591549295774659"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="77Z-8Q-2M2">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="lRU-3a-mBE" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="7JB-BO-k8G"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Oy-d4-s0O">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -443,6 +489,7 @@
     <resources>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="music.quarternote.3" catalog="system" width="128" height="102"/>
+        <image name="note" width="640" height="640"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

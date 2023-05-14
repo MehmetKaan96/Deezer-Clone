@@ -43,6 +43,7 @@
 		D3C14FDF2A113BF200C38CF3 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C14FDD2A113BF200C38CF3 /* FavoritesTableViewCell.swift */; };
 		D3C14FE02A113BF200C38CF3 /* FavoritesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C14FDE2A113BF200C38CF3 /* FavoritesTableViewCell.xib */; };
 		D3C14FE42A1141B700C38CF3 /* FavoritesVC + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C14FE32A1141B700C38CF3 /* FavoritesVC + Extension.swift */; };
+		D3DE98342A1175B400AFEF69 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DE98332A1175B400AFEF69 /* LandingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		D3C14FDD2A113BF200C38CF3 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		D3C14FDE2A113BF200C38CF3 /* FavoritesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesTableViewCell.xib; sourceTree = "<group>"; };
 		D3C14FE32A1141B700C38CF3 /* FavoritesVC + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoritesVC + Extension.swift"; sourceTree = "<group>"; };
+		D3DE98332A1175B400AFEF69 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				D35ADCE92A0BECF7005D2CB1 /* ArtistAlbumViewController.swift */,
 				D3C14FAF2A0FCD2E00C38CF3 /* TracksViewController.swift */,
 				D3C14FDB2A113B9E00C38CF3 /* FavoritesViewController.swift */,
+				D3DE98332A1175B400AFEF69 /* LandingViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				D35ADCF02A0D00BB005D2CB1 /* ArtistAlbumVC + Extension.swift in Sources */,
 				D33F335A2A0B9A05003275B1 /* GenreViewController + Extensions.swift in Sources */,
 				D33F33512A0B902C003275B1 /* Constants.swift in Sources */,
+				D3DE98342A1175B400AFEF69 /* LandingViewController.swift in Sources */,
 				D3C14FB32A0FCD8D00C38CF3 /* TracksTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
